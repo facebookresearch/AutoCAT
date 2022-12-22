@@ -213,7 +213,7 @@ The paper is available in the procceedings the 29th Sympisum on High Performance
 ```
 @inproceedings{luo2023autocat
 year={2023},
-title={{AutoCAT: Reinforcement Learning for Automated Explorations Cache-Timing Vulnerabilities}},
+title={{AutoCAT: Reinforcement Learning for Automated Exploration of Cache-Timing Attacks}},
 booktitle={29th Sympisum on High Performance Computer Architecture (HPCA)},
 author={Mulong Luo and Wenjie Xiong and Geunbae Lee and Yueying Li and Xiaomeng Yang and Amy Zhang and Yuandong Tian and Hsien Hsin S. Lee and G. Edward Suh}
 }
@@ -221,4 +221,4 @@ author={Mulong Luo and Wenjie Xiong and Geunbae Lee and Yueying Li and Xiaomeng 
 
 ### License
 
-This project is under the CC-BY-NC 4.0 license. See [LICENSE](LICENSE) for details.
+This project is under the GNU General Public License (GPL) v2.0 license. See [LICENSE](LICENSE) for details.
