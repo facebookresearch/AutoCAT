@@ -1,0 +1,52 @@
+[32mLoading config...[0m
+[32mMemory hierarchy built.[0m
+[32mLoading tracefile...[0m
+[32mLoaded tracefile llc3/test.txt[0m
+[32mBegin simulation![0m
+[32m0:	Reading 00000000 R2[0m
+[33m	hit_list: {'cache_1_core_2': False, 'cache_2': False, 'mem': True}	time: 1017
+[0m
+[32m1:	Reading 00000001 R2[0m
+[33m	hit_list: {'cache_1_core_2': False, 'cache_2': False, 'mem': True}	time: 1017
+[0m
+[32m2:	Reading 00000002 R[0m
+[33m	hit_list: {'cache_1': False, 'cache_2': False, 'mem': True}	time: 1017
+[0m
+[32m3:	Reading 00000000 R2[0m
+[33m	hit_list: {'cache_1_core_2': False, 'cache_2': False, 'mem': True}	time: 1017
+[0m
+[32m4:	Reading 00000001 R2[0m
+[33m	hit_list: {'cache_1_core_2': True}	time: 1
+[0m
+[32m5:	Reading 00000000 R2[0m
+[33m	hit_list: {'cache_1_core_2': True}	time: 1
+[0m
+[32m6:	Reading 00000001 R2[0m
+[33m	hit_list: {'cache_1_core_2': True}	time: 1
+[0m
+[32m7:	Reading 00000003 R[0m
+[33m	hit_list: {'cache_1': False, 'cache_2': False, 'mem': True}	time: 1017
+[0m
+[32m8:	Reading 00000000 R2[0m
+[33m	hit_list: {'cache_1_core_2': True}	time: 1
+[0m
+[32m9:	Reading 00000001 R2[0m
+[33m	hit_list: {'cache_1_core_2': False, 'cache_2': False, 'mem': True}	time: 1017
+[0m
+[32mSimulation complete[0m
+[32m
+Number of instructions: 10[0m
+[32m
+Total cycles taken: 6106
+[0m
+[32mcache_2[0m
+[32m	Number of accesses: 6[0m
+[32m	Number of hits: 0[0m
+[32m	Number of misses: 6[0m
+[32mcache_1[0m
+[32m	Number of accesses: 2[0m
+[32m	Number of hits: 0[0m
+[32m	Number of misses: 2[0m
+[32m
+AMATs:
+{'cache_1': 1017.0, 'cache_2': 1016.0, 'mem': 1000}[0m
