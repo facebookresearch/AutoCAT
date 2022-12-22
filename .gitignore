@@ -1,0 +1,8 @@
+**/.cache/*
+**/__pycache__/*
+**/build/*
+**/outputs/*
+*.egg-info/*
+*.eggs/*
+*.so
+env_test/rep_policy/*/result.txt
