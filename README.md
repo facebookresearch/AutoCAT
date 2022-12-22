@@ -219,3 +219,6 @@ author={Mulong Luo and Wenjie Xiong and Geunbae Lee and Yueying Li and Xiaomeng 
 }
 ```
 
+### License
+
+This project is under the CC-BY-NC 4.0 license. See [LICENSE](LICENSE) for details.
