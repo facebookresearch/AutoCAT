@@ -1,0 +1,15 @@
+*.pyc
+*.log
+log
+example/log
+log
+src/log
+log
+temp.txt
+*.png
+*.zip
+__pycache__
+*.png
+*.old
+*.pth
+*.pdf
