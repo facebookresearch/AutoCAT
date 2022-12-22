@@ -1,3 +1,8 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+#
+# This software may be used and distributed according to the terms of the
+# GNU General Public License version 2.
+
 # a textbook prime probe attacker that serve as the agent 
 # which can have high reward for the cache guessing game
 # used to generate the attack sequence that can be detected by cchunter

@@ -1,3 +1,8 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+//
+// This software may be used and distributed according to the terms of the
+// GNU General Public License version 2.
+
 /*
 
 Covert channel using Algorithm 1 under Hyper-threaded sharing
@@ -392,6 +397,17 @@ int main(int argc, char *argv[]) {
   }
 
   struct readThreadParams *attack_argv;
+    
+  attack_argv = (struct readThreadParams *)(malloc(sizeof(*attack_argv)));
+  attack_argv -> start= &way;
+  attack_argv -> chain= chain;
+  
+
+  test_delay(attack_argv);
+
+  return 0;
+}
+ readThreadParams *attack_argv;
     
   attack_argv = (struct readThreadParams *)(malloc(sizeof(*attack_argv)));
   attack_argv -> start= &way;

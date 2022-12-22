@@ -1,3 +1,8 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+#
+# This software may be used and distributed according to the terms of the
+# GNU General Public License version 2.
+
 class Block:
     def __init__(self, block_size, current_step, dirty, address, domain_id = -1):
         self.size = block_size

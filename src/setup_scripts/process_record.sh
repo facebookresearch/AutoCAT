@@ -1,3 +1,8 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+#
+# This software may be used and distributed according to the terms of the
+# GNU General Public License version 2.
+
 python process_record.py PPO_cache_guessing_game_env_fix_2022-03-23_16-38-0673o6tf1c
 python process_record.py PPO_cache_guessing_game_env_fix_2022-03-23_16-41-31y788eabe
 python process_record.py PPO_cache_guessing_game_env_fix_2022-03-23_16-42-49g8devoub

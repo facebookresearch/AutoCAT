@@ -1,3 +1,8 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+#
+# This software may be used and distributed according to the terms of the
+# GNU General Public License version 2.
+
 # Author: Mulong Luo
 # date 2021.12.3
 # description: environment for study RL for side channel attack
