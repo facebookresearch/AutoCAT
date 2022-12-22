@@ -208,7 +208,7 @@ Please direct any questions to Mulong Luo ```ml2558@cornell.edu```.
 
 ## Research Paper
 
-The paper is available in the procceedings the 29th Sympisum on High Performance Computer Architecture [(HPCA)](https://hpca-conf.org/2023/). Please cite our work with the bibtex entry
+The paper is available in the procceedings the 29th Sympisum on High Performance Computer Architecture [(HPCA)](https://hpca-conf.org/2023/). Please cite our work with the following bibtex entry.
 
 ```bibtex
 @inproceedings{luo2023autocat
