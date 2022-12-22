@@ -1,3 +1,8 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+#
+# This software may be used and distributed according to the terms of the
+# GNU General Public License version 2.
+
 # run unit test
 ../../src/cache_simulator.py -pdc $1/config -t $1/test.txt -f $1/result.txt
 
