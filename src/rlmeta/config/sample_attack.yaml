@@ -1,0 +1,10 @@
+num_episodes: -1
+seed: 0
+reset_cache_state: False
+
+checkpoint: ""
+deterministic_policy: true
+
+defaults:
+  - env_config: hpca_ae_exp_4_1
+  - model_config: transformer

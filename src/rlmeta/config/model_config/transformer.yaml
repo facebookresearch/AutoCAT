@@ -1,0 +1,11 @@
+type: "transformer"
+args:
+  latency_dim: 3
+  victim_acc_dim: 2
+  action_dim: 64
+  step_dim: 64
+  action_embed_dim: 16
+  step_embed_dim: 4
+  hidden_dim: 128
+  output_dim: -1
+  num_layers: 1
