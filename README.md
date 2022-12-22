@@ -208,14 +208,14 @@ Please direct any questions to Mulong Luo ```ml2558@cornell.edu```.
 
 ## Research Paper
 
-The paper is available in the procceedings the 29th Sympisum on High Performance Computer Architecture [(HPCA)](https://hpca-conf.org/2023/). Yo can cite our work with the bibtex entry
+The paper is available in the procceedings the 29th Sympisum on High Performance Computer Architecture [(HPCA)](https://hpca-conf.org/2023/). Please cite our work with the following bibtex entry.
 
-```
+```bibtex
 @inproceedings{luo2023autocat
-year={2023},
-title={{AutoCAT: Reinforcement Learning for Automated Exploration of Cache-Timing Attacks}},
-booktitle={29th Sympisum on High Performance Computer Architecture (HPCA)},
-author={Mulong Luo and Wenjie Xiong and Geunbae Lee and Yueying Li and Xiaomeng Yang and Amy Zhang and Yuandong Tian and Hsien Hsin S. Lee and G. Edward Suh}
+  title={{AutoCAT: Reinforcement Learning for Automated Exploration of Cache-Timing Attacks}},
+  author={Mulong Luo and Wenjie Xiong and Geunbae Lee and Yueying Li and Xiaomeng Yang and Amy Zhang and Yuandong Tian and Hsien Hsin S. Lee and G. Edward Suh},
+  booktitle={29th Sympisum on High Performance Computer Architecture (HPCA)},
+  year={2023}
 }
 ```
 
