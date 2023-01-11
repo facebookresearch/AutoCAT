@@ -221,4 +221,4 @@ The paper is available in the procceedings the 29th Sympisum on High Performance
 
 ### License
 
-This project is under the GNU General Public License (GPL) v2.0 or later license. See [LICENSE](LICENSE) for details.
+This project is under the GNU General Public License (GPL) v2.0 license. See [LICENSE](LICENSE) for details.
