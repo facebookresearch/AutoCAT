@@ -30,30 +30,31 @@ Since the training takes some time, we provide pretrained checkpoints in the fol
 
 
 
-To calculate the bit rate, max autocorrelation and accuracy of RL\_baseline
+To calculate the bit rate, max autocorrelation and accuracy of RL\_SVM
 ```
-$  python sample_cyclone.py checkpoint=${GIT_ROOT}/AutoCAT/src/rlmeta/data/table9/hpca_ae_exp_9_baseline/ppo_agent-70.pth env_config.window_size=164 num_episodes=1000
+$  python sample_cyclone.py env_config=hpca_ae_exp_9_svm checkpoint=${GIT_ROOT}/AutoCAT/src/rlmeta/data/table9/hpca_ae_exp_9_svm_new/exp1/ppo_agent-499.pth num_episodes=1000
 ```
 
 which printout the following in the end
 ```
- info                   key          mean         std           min           max    count
+  info                   key          mean         std           min           max    count
 ------  --------------------  ------------  ----------  ------------  ------------  -------
-sample        episode_length  161.36200000  0.80433575  160.00000000  162.00000000     1000
-sample        episode_return   33.67600000  1.95730018   26.00000000   40.00000000     1000
-sample             num_guess   35.13600000  1.44965651   31.00000000   40.00000000     1000
-sample           num_correct   34.74200000  1.46745903   31.00000000   40.00000000     1000
-sample          correct_rate    0.98893407  0.01903875    0.88571429    1.00000000     1000
-sample              bandwith    0.21774389  0.00885451    0.19135802    0.24844720     1000
-sample        cyclone_attack    0.67200000  0.46948482    0.00000000    1.00000000     1000
-sample  overall_correct_rate    0.98878643  0.00000000    0.98878643    0.98878643        1
-sample      overall_bandwith    0.21774643  0.00000000    0.21774643    0.21774643        1
+sample        episode_length  160.00000000  0.00000000  160.00000000  160.00000000     1000
+sample        episode_return   24.44600000  7.39006658  -78.00000000   32.00000000     1000
+sample             num_guess   25.01800000  1.94722264   21.00000000   32.00000000     1000
+sample           num_correct   24.98200000  1.95388741   21.00000000   32.00000000     1000
+sample          correct_rate    0.99856189  0.00759887    0.93548387    1.00000000     1000
+sample              bandwith    0.15636250  0.01217014    0.13125000    0.20000000     1000
+sample        cyclone_attack    0.00500000  0.07053368    0.00000000    1.00000000     1000
+sample  overall_correct_rate    0.99856104  0.00000000    0.99856104    0.99856104        1
+sample      overall_bandwith    0.15636250  0.00000000    0.15636250    0.15636250        1
 ```
-The bit rate(overall_bandwidth)=0.22, correct_rate=0.989, and detection_rate (cyclone_attack)=0.672 can be read out directly.
 
-Similarly, to calculate the bit rate, max autocorrelation and accuracy of RL\_SVM
+The bit rate(overall_bandwidth)=0.156, correct_rate=0.999, and detection_rate (cyclone_attack)=0.005 can be read out directly.
+
+Similarly, to calculate the bit rate, max autocorrelation and accuracy of RL\_baseline
 ```
-$ python sample_cyclone.py checkpoint=${GIT_ROOT}AutoCAT/src/rlmeta/data/table9/hpca_ae_exp_9_svm/ppo_agent-70.pth env_config.window_size=164 num_episodes=1000
+$ python sample_cyclone.py env_config=hpca_ae_exp_9_baseline checkpoint=${GIT_ROOT}AutoCAT/src/rlmeta/data/table9/hpca_ae_exp_9_baseline_new/exp1/ppo_agent-499.pth num_episodes=1000
 ```
 
 To calculate the bit rate, max autocorrelation and accuracy of textbook attacker

@@ -33,28 +33,30 @@ Since the training takes some time, we provide pretrained checkpoints in the fol
 
 To calculate the bit rate, max autocorrelation and accuracy of RL\_autocor 
 ```
-$ python sample_cchunter.py env_config=hpca_ae_exp_8_autocor checkpoint=${GIT_ROOT}/src/rlmeta/data/table8/hpca_ae_exp_8_autocor/ppo_agent-696.pth env_config.window_size=164 num_episodes=1000
+$ python sample_cchunter.py env_config=hpca_ae_exp_8_autocor checkpoint=${GIT_ROOT}/src/rlmeta/data/table8/hpca_ae_exp_8_autocor_new/exp1/ppo_agent-499.pth num_episodes=1000
 ```
 
 which printout the following in the end
 ```
   info                   key          mean         std           min           max    count
 ------  --------------------  ------------  ----------  ------------  ------------  -------
-sample        episode_length  162.00000000  0.00000000  162.00000000  162.00000000     1000
-sample        episode_return   22.71700161  5.76235450  -55.48715697   30.88211980     1000
-sample             num_guess   33.70700000  1.22112694   31.00000000   40.00000000     1000
-sample           num_correct   33.64900000  1.21235267   30.00000000   38.00000000     1000
-sample          correct_rate    0.99831903  0.00821158    0.90909091    1.00000000     1000
-sample              bandwith    0.20806790  0.00753782    0.19135802    0.24691358     1000
-sample          max_autocorr    0.60822789  0.10691965    0.30434783    0.99523411     1000
-sample  overall_correct_rate    0.99827929  0.00000000    0.99827929    0.99827929        1
-sample      overall_bandwith    0.20806790  0.00000000    0.20806790    0.20806790        1
+sample        episode_length  160.00000000  0.00000000  160.00000000  160.00000000     1000
+sample        episode_return   24.87361181  4.42775145    5.26269423   33.31955257     1000
+sample             num_guess   33.86500000  1.19948947   31.00000000   38.00000000     1000
+sample           num_correct   33.79000000  1.18823398   31.00000000   37.00000000     1000
+sample          correct_rate    0.99784251  0.00968676    0.91666667    1.00000000     1000
+sample              bandwith    0.21165625  0.00749681    0.19375000    0.23750000     1000
+sample          max_autocorr    0.52178425  0.12436690    0.22448980    0.87297078     1000
+sample      detect_rate-0.75    0.03400000  0.18122914    0.00000000    1.00000000     1000
+sample  overall_correct_rate    0.99778532  0.00000000    0.99778532    0.99778532        1
+sample      overall_bandwith    0.21165625  0.00000000    0.21165625    0.21165625        1
+
 ```
-The bit rate(overall_bandwidth)=0.208, correct_rate=0.998, and max_autocorr=0.608 can be read out directly.
+The bit rate(overall_bandwidth)=0.212, correct_rate=0.998, and average max_autocorr=0.522 can be read out directly.
 
 Similarly, to calculate the bit rate, max autocorrelation and accuracy of RL\_baseline
 ```
-$ python sample_cchunter.py env_config=hpca_ae_exp_8_baseline checkpoint=${GIT_ROOT}/src/rlmeta/data/table8/hpca_ae_exp_8_baseline/ppo_agent-429.pth env_config.window_size=164 num_episodes=1000
+$ python sample_cchunter.py env_config=hpca_ae_exp_8_baseline checkpoint=${GIT_ROOT}/src/rlmeta/data/table8/hpca_ae_exp_8_baseline_new/exp1/ppo_agent-499.pth num_episodes=1000
 ```
 
 To calculate the bit rate, max autocorrelation and accuracy of textbook attacker
