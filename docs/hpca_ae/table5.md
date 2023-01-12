@@ -64,7 +64,7 @@ Each row represents the stats of training in one RL epoch (=3000 steps)
 For example, run the following script will print the logs shown below.
 
 ```
-python data/show_log.py --log_file=data/table5/hpca_ae_exp_5_lru/exp_1/train_ppo_attack.log
+$ python data/show_log.py --log_file=data/table5/hpca_ae_exp_5_lru/exp_1/train_ppo_attack.log
 ```
 
 You can see that at epoch **14** which is the **15th** epoch, the training ```correct_rate``` jump to 0.99093645 which is over 0.97. And at this epoch, the evaluation ```episode_length``` is 7.0. For LRU, PLRU, and RRIP, we calculate the average of evaluation ```episode_length``` and epochs to converge among three experiments.

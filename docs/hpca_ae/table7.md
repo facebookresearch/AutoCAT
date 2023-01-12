@@ -35,7 +35,7 @@ which will print out the mean/max/min of ```episode_length```, ```correct_rate``
 For example, run the following script will print the logs shown below.
 
 ```
-python data/show_log.py --log_file=data/table7/hpca_ae_exp_7_baseline/exp_1/train_ppo_attack.log
+$ python data/show_log.py --log_file=data/table7/hpca_ae_exp_7_baseline/exp_1/train_ppo_attack.log
 ```
 
 You can see that at epoch **6** which is the **7th** epoch, the training ```correct_rate``` jump to 0.98736399 which is over 0.97. And at th end of the training, the evaluation ```episode_length``` is 6.98. For baseline and PLcache, we perform three experiments each and calculate the corresponding average epoch to converge and final evaluation episode_length at the end.
