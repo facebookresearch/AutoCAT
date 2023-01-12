@@ -61,13 +61,13 @@ The training log includes the information of epochs to coverge (i.e., when ```co
 ```
 Each row represents the stats of training in one RL epoch (=3000 steps)
 
-Use the following to grep the interested information from ```train_ppo_attack.log```
+For example, run the following script will print the logs shown below.
 
 ```
 python data/show_log.py --log_file=data/table5/hpca_ae_exp_5_lru/exp_1/train_ppo_attack.log
 ```
 
-which will print out the logs for each epoch. We can see that at epoch **14** which is the 15th epoch, the training ```correct_rate``` jump to 0.99093645 which is over 0.97. And at this epoch, the evaluation ```episode_length``` is 7.0. For LRU, PLRU, and RRIP, we calculate the average of evaluation ```episode_length``` and epochs to converge among three experiments.
+You can see that at epoch **14** which is the **15th** epoch, the training ```correct_rate``` jump to 0.99093645 which is over 0.97. And at this epoch, the evaluation ```episode_length``` is 7.0. For LRU, PLRU, and RRIP, we calculate the average of evaluation ```episode_length``` and epochs to converge among three experiments.
 
 
 ```
