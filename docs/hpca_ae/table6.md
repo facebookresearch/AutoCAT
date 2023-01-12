@@ -28,7 +28,7 @@ workding_dir = /home/ml2558/Downloads/AutoCAT/src/rlmeta/outputs/2022-10-31/19-0
 ```
 Please take notes of the ```working_dir```, which is the place where all the checkpoint and logs corresponding to this training is saved.
 
-There are 17 configs in Table V, and we have  ```hpca_ae_exp_6_0005```, ```hpca_ae_exp_6_001```, ```hpca_ae_exp_002``` correpondingly, replace ```<NAME_OF_THE_CONFIG>``` with these.
+There are 3 configs in Table V, and we have  ```hpca_ae_exp_6_0005```, ```hpca_ae_exp_6_001```, ```hpca_ae_exp_002``` correpondingly, replace ```<NAME_OF_THE_CONFIG>``` with these.
 
 Use ```Ctrl+C``` to interrupt the training, which will save a checkpoint in the given path ```src/rlmeta/output/<DATE>/<TIME>/ppo_agent-<X>.pth``` and corresponding training logs in ```src/rlmeta/output/<DATE>/<TIME>/train_ppo_attack.log```. 
 
