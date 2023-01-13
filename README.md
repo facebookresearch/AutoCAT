@@ -2,7 +2,7 @@ AutoCAT
 ==============
 This repo contains artifacts of the paper:
 
-* "AutoCAT: Reinforcement Learning for Automated Exploration of cache-Timing Attacks" (HPCA'23).
+* "AutoCAT: Reinforcement Learning for Automated Exploration of Cache-Timing Attacks" (HPCA'23).
 
 The paper will be available at the [HPCA website](https://hpca-conf.org/2023/).
 
