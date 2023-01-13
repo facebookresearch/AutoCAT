@@ -44,14 +44,7 @@ Sun Oct 23 20:43:01 2022
 +-----------------------------------------------------------------------------+
 ```
 
-## Test setup
-
-### Option 1: use the provided machines
-
-For the convenience of the reviewers.
-We provide server host with these dependencies already installed. Please follow [server.md](docs/hpca_ae/server.md) for instructions on how to access these machines.
-
-### Option 2: setup environment manually on a new machine with GPU
+## Set up Enviroment on a GPU machine
 
 We use conda to manage all the python dependencies, we assume the ```conda``` is already installed, and we provide a script to install all the depedencies using ```conda```.
 
@@ -108,14 +101,14 @@ Please follow setup process on [rlmeta](https://github.com/facebookresearch/rlme
 
 ## General flow for Training and evaluating RL agent
 
-Once the system is set up (either uisng the provided ssh host or using your own machine), unzip the ```AutoCAT-master.zip``` and go to the directory.
+Once the system is set up. Please checkout our code.
 
 ```
-$ unzip AutoCAT-master.zip
-$ cd AutoCAT-master
+(py38) $ git clone https://github.com/facebookresearch/AutoCAT
+(py38) $ cd AutoCAT
 ```
 
-Then, set the path to the ```AutoCAT-master``` repo.
+Then, set the path to the ```AutoCAT``` repo.
 
 ```
 $ export GIT_ROOT=<path_to_the_autocat_repo>
@@ -125,7 +118,7 @@ You can launch the experiment to train the RL agent
 
 ```
 $ cd ${GIT_ROOT}/src/rlmeta
-$ python train_ppo_attack.py table_view=True
+$ python train_ppo_attack.py
 ```
 
 At the beginning the replay buffer will be filled and the print out will look like.
@@ -157,13 +150,10 @@ To extract the pattern of the RL agent, use the following script
 $ cd ${GIT_ROOT}/src/rlmeta
 $ python sample_attack.py env_config=hpca_ae_exp_4_1 checkpoint=${GIT_ROOT}/src/rlmeta/data/table4/hpca_ae_exp_4_1/ppoagent.pth
 ```
+
 For several scenarios, training may take long time, also due to the undeterministic nature of reinforcement learning, the trained results vary from each invokations. To save the time of reviewers, we provide pretrained checkpoints and reviewers can sample it directly.
 
 ## Experiments
-
-We recommend using the provided ssh host for performing the experiments. To access the ssh host, see the following.
-
-[ssh host instructions](docs/hpca_ae/server.md)
 
 We provide scripts to run the following experiments appeared in the original paper.
 
