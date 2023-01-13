@@ -70,16 +70,28 @@ $ conda activate py38
 Undet the py38 environment
 
 ```
-(py38) $ pip install sklearn seaborn pyyaml hydra-core terminaltables torch pep517
-```
-```
-(py38) $ pip install moolib
+(py38) $ pip install scikit-learn seaborn pyyaml hydra-core terminaltables pep517
 ```
 
 The environment is based on openai [gym](https://github.com/openai/gym). To install it, use the following.
 
 ```
-(py38) $ pip install gym==0.25
+(py38) $ pip install gym
+```
+
+Please follow [PyTorch Get STarted](https://pytorch.org/get-started/locally/) to install PyTorch with proper CUDA version. One example is listed below.
+```
+(py38) $ conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
+```
+
+The enviroment need [moolib](https://github.com/facebookresearch/moolib) as the RPC backend for distributed RL training. Please follow the moolib installation instructions.
+We recommend building moolib from source with the following steps.
+
+```
+(py38) $ git clone https://github.com/facebookresearch/moolib
+(py38) $ cd moolib
+(py38) $ git submodule sync && git submodule update --init --recursive
+(py38) $ pip install .
 ```
 
 The RL trainer is based on [RLMeta](https://github.com/facebookresearch/rlmeta). 
@@ -92,8 +104,6 @@ Please follow setup process on [rlmeta](https://github.com/facebookresearch/rlme
 (py38) $ git submodule sync && git submodule update --init --recursive
 (py38) $ pip install -e .
 ```
-
-
 
 
 ## General flow for Training and evaluating RL agent
