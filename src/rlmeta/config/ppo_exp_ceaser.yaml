@@ -1,0 +1,56 @@
+m_server_name: "m_server"
+m_server_addr: "127.0.0.1:4411"
+
+r_server_name: "r_server"
+r_server_addr: "127.0.0.1:4412"
+
+c_server_name: "c_server"
+c_server_addr: "127.0.0.1:4413"
+
+train_device: "cuda:0"
+infer_device: "cuda:1"
+
+num_train_rollouts: 1
+num_train_workers: 1
+
+num_eval_rollouts: 1
+num_eval_workers: 1
+
+# replay_buffer_size: 262144
+# replay_buffer_size: 131072
+replay_buffer_size: 65536
+prefetch: 2
+
+batch_size: 512
+lr: 1e-4
+# learning_starts: 65536
+push_every_n_steps: 10
+
+entropy_coeff: 0.01
+
+num_epochs: 3000
+steps_per_epoch: 3000
+
+num_eval_episodes: 100
+
+train_seed: 123
+eval_seed: 456
+
+table_view: false
+
+defaults:
+  # - env_config: config_exp2
+  # - env_config: config_exp3
+  # - env_config: config_exp4
+  # - env_config: config_exp5
+  # - env_config: config_exp6
+  # - env_config: config_exp7
+  # - env_config: config_exp8
+  # - env_config: config_exp9
+  # - env_config: config_exp10
+  # - env_config: config_exp11
+  # - env_config: config_exp12
+  # - env_config: config_exp_remap_baseline
+  # - env_config: config_exp_remap_baseline2
+  - env_config: config_exp_ceaser
+  - model_config: experiments

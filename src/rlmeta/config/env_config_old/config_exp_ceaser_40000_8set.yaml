@@ -1,0 +1,34 @@
+length_violation_reward: -2.0
+double_victim_access_reward: -0.01
+victim_access_reward: -0.01
+correct_reward: 1.0
+wrong_reward: -1.0
+step_reward: -0.01
+
+verbose: 0
+force_victim_hit: false
+flush_inst: false
+allow_victim_multi_access: true
+allow_empty_victim_access: true
+attacker_addr_s: 1
+attacker_addr_e: 16
+victim_addr_s: 0
+victim_addr_e: 0
+reset_limit: 1
+rerandomize_victim: true
+ceaser_remap_period: 40000
+
+cache_configs:
+  architecture:
+    word_size: 1
+    block_size: 1
+    write_back: true
+  cache_1:
+    blocks: 16
+    associativity: 2
+    hit_time: 1
+    rep_policy: "lru"
+  mem:
+    hit_time: 1000
+
+window_size: 64
