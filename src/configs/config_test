@@ -1,0 +1,56 @@
+{
+    "env": "cache_guessing_game_env_fix", 
+    "evaluation_num_workers": 1, 
+    "evaluation_interval": 5,
+    "env_config": {
+        "verbose": 1,
+        "force_victim_hit": false,
+        "flush_inst": false,
+        "allow_victim_multi_access": true, 
+        "attacker_addr_s": 0,
+        "attacker_addr_e": 15,
+        "victim_addr_s": 0,
+        "victim_addr_e": 7,
+        "reset_limit": 1,
+        "length_violation_reward": -1,
+        "double_victim_access_reward": -0.001,  
+        "victim_access_reward": -0.001,
+        "correct_reward": 0.02,
+        "wrong_reward": -1,
+        "step_reward": -0.001,
+        "cache_configs": {
+            "architecture": {
+              "word_size": 1, 
+              "block_size": 1, 
+              "write_back": true
+            },
+            "cache_1": {
+              "blocks": 8, 
+              "associativity": 8,  
+              "hit_time": 1 
+            },
+            "mem": {
+              "hit_time": 1000 
+            }
+        }
+    }, 
+    "num_gpus": 1, 
+    "num_workers": 4, 
+    "num_envs_per_worker": 1, 
+    "lr": 1e-3, 
+    "model": {
+        "custom_model": "dnn_model",
+        "custom_model_config": {
+            "window_size": 40, 
+            "latency_dim": 3,
+            "victim_acc_dim": 2,
+            "action_dim": 200, 
+            "step_dim": 80,
+            "action_embed_dim": 32,
+            "step_embed_dim": 6,
+            "hidden_dim": 32,
+            "num_blocks": 1
+        }
+    }, 
+    "framework": "torch"
+}

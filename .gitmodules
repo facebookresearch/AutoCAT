@@ -1,0 +1,6 @@
+[submodule "third_party/rlmeta"]
+	path = third_party/rlmeta
+	url = https://github.com/facebookresearch/rlmeta.git
+[submodule "third_party/cachequery"]
+	path = third_party/cachequery
+	url = https://github.com/lmlaaron/cachequery.git
