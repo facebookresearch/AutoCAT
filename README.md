@@ -79,7 +79,7 @@ The environment is based on openai [gym](https://github.com/openai/gym). To inst
 (py38) $ pip install gym
 ```
 
-Please follow [PyTorch Get STarted](https://pytorch.org/get-started/locally/) to install PyTorch with proper CUDA version. One example is listed below.
+Please follow the [PyTorch Get Started](https://pytorch.org/get-started/locally/) website to install PyTorch with proper CUDA version. One example is listed below.
 ```
 (py38) $ conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
 ```
