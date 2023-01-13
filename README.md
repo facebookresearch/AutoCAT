@@ -99,7 +99,7 @@ Please follow setup process on [rlmeta](https://github.com/facebookresearch/rlme
 ```
 
 
-## General flow for Training and evaluating RL agent
+## General flow for Training and Evaluating RL agent
 
 Once the system is set up. Please checkout our code.
 
@@ -114,7 +114,7 @@ Then, set the path to the ```AutoCAT``` repo.
 $ export GIT_ROOT=<path_to_the_autocat_repo>
 ```
 
-You can launch the experiment to train the RL agent
+You can launch the experiment to train the RL agent. One basic example is shown below. We provide the training scripts with parameters we are using on our machines in the ```src/rlmeta/data/``` dir for each of the experiments.
 
 ```
 $ cd ${GIT_ROOT}/src/rlmeta
