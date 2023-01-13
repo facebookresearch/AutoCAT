@@ -1,0 +1,6 @@
+Number of epochs for training correct_rate >= 0.97
+
+exp_1: 15
+exp_2: 26
+exp_3: 37
+avg:   26

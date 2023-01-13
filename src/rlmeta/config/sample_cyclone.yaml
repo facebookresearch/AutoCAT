@@ -1,0 +1,9 @@
+num_episodes: 10
+seed: 1234
+
+checkpoint: ""
+deterministic_policy: true
+
+defaults:
+  - env_config: hpca_ae_exp_9_svm
+  - model_config: transformer
