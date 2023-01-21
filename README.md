@@ -74,7 +74,7 @@ The environment is based on openai [gym](https://github.com/openai/gym). To inst
 
 Please follow the [PyTorch Get Started](https://pytorch.org/get-started/locally/) website to install PyTorch with proper CUDA version. One example is listed below.
 ```
-(py38) $ conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
+(py38) $ conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=10.2 -c pytorch
 ```
 
 The enviroment needs [moolib](https://github.com/facebookresearch/moolib) as the RPC backend for distributed RL training. Please follow the moolib installation instructions.
