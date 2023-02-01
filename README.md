@@ -87,13 +87,14 @@ We recommend building moolib from source with the following steps.
 (py38) $ pip install .
 ```
 
-The RL trainer is based on [RLMeta](https://github.com/facebookresearch/rlmeta). 
+The RL trainer is based on [RLMeta](https://github.com/facebookresearch/rlmeta) at commit 1057fbbf2637a002296afe5071e6ac0e7b630fe0.
 
 Please follow setup process on [rlmeta](https://github.com/facebookresearch/rlmeta) for install RLMeta.
 
 ```
 (py38) $ git clone https://github.com/facebookresearch/rlmeta
 (py38) $ cd rlmeta
+(py38) $ git checkout 1057fbbf2637a002296afe5071e6ac0e7b630fe0
 (py38) $ git submodule sync && git submodule update --init --recursive
 (py38) $ pip install -e .
 ```
