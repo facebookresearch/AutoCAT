@@ -114,11 +114,11 @@ Run the docker image
 $ docker run -it --gpus all ml2558/autocat-rlmeta /bin/bash
 ```
 
-Set the conda environment variables and activate ```py38``` environment.
+Inside the docker containeer, set the conda environment variables and activate ```py38``` environment.
 
 ```
-$ eval "$(/root/miniconda3/bin/conda shell.bash hook)" 
-$ conda activate py38
+# eval "$(/root/miniconda3/bin/conda shell.bash hook)" 
+# conda activate py38
 ```
 
 This will prepare all dependencies for running the experiments.
