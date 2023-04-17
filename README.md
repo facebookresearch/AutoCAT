@@ -99,6 +99,30 @@ Please follow setup process on [rlmeta](https://github.com/facebookresearch/rlme
 (py38) $ pip install -e .
 ```
 
+Alternatively, we have prebuilt a docker image that can be deployed on a AWS g5.xlarge instance with Deep Learning AMI GPU PyTorch 2.0.0 (Ubuntu 20.04) 20230401 image (ami-0a4caa099fc23090f).
+Please follow [this](https://docs.docker.com/engine/install/ubuntu/) on installing the latest version of docker engine.
+The docker image can be pulled by 
+
+```
+$ docker pull ml2558/autocat-rlmeta
+```
+
+
+Run the docker image
+
+```
+$ docker run -it --gpus all ml2558/autocat-rlmeta /bin/bash
+```
+
+Set the conda environment variables and activate ```py38``` environment.
+
+```
+$ eval "$(/root/miniconda3/bin/conda shell.bash hook)" 
+$ conda activate py38
+```
+
+This will prepare all dependencies for running the experiments.
+
 
 ## General flow for Training and Evaluating RL agent
 
