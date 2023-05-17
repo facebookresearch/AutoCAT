@@ -270,7 +270,6 @@ def build_cache(configs, name, next_level_cache, logger):
                 logger,
                 next_level_cache,
                 rep_policy = configs[name]['rep_policy'] if 'rep_policy' in configs[name] else '',
-                prefetcher = configs[name]['prefetcher'] if 'prefetcher' in configs[name] else "none",
                 verbose = configs['verbose'] if 'verbose' in configs else 'False' )
 
 
