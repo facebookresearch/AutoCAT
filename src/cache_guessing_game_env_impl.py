@@ -270,11 +270,6 @@ class CacheGuessingGameEnv(gym.Env):
   '''
   def step(self, action):
     # print_cache(self.l1)
-    '''
-    For cyclone, default value of the cyclic set and way index
-    '''
-    cyclic_set_index = -1
-    cyclic_way_index = -1
 
     self.vprint('Step...')
     info = {}
@@ -463,8 +458,6 @@ class CacheGuessingGameEnv(gym.Env):
     this info is for use of various wrappers like cchunter_wrapper and cyclone_wrapper
     '''
     info["cache_state_change"] = cache_state_change
-    info["cyclic_way_index"] = cyclic_way_index
-    info["cyclic_set_index"] = cyclic_set_index
 
     if self.super_verbose == True:
       for cache in self.hierarchy:
@@ -593,18 +586,6 @@ class CacheGuessingGameEnv(gym.Env):
         raise RuntimeError from None
       self.l1.read(hex(addr)[2:], self.current_step)#, domain_id='X')
       self.current_step += 1
-
-  '''
-  rerturns the dimension of the observation space
-  '''
-  def get_obs_space_dim(self):
-    return int(np.prod(self.observation_space.shape))
-
-  '''
-  returns the action space dimension in a int number
-  '''
-  def get_act_space_dim(self):
-    return int(np.prod(self.action_space.shape))
 
   '''
   same as print() when self.verbose == 1

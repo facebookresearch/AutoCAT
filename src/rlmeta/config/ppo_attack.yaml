@@ -16,7 +16,7 @@ num_train_workers: 2
 num_eval_rollouts: 2
 num_eval_workers: 1
 
-replay_buffer_size: 131072
+replay_buffer_size: 1024
 prefetch: 2
 
 batch_size: 512
