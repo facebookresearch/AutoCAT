@@ -182,31 +182,12 @@ class CacheGuessingGameEnv(gym.Env):
     define the action space
     '''
     # using tightened action space
-    ####if self.flush_inst == False:
     ####  # one-hot encoding
-    ####  if self.allow_empty_victim_access == True:
-    ####    # | attacker_addr | v | victim_guess_addr | guess victim not access |
-    ####    self.action_space = spaces.Discrete(
-    ####      len(self.attacker_address_space) + 1 + len(self.victim_address_space) + 1
-    ####    )
-    ####  else:
         # | attacker_addr | v | victim_guess_addr | 
     self.action_space = spaces.Discrete(
       len(self.attacker_address_space) + 1 + len(self.victim_address_space)
     )
-    ###else:
-    ###  # one-hot encoding
-    ###  if self.allow_empty_victim_access == True:
-    ###    # | attacker_addr | flush_attacker_addr | v | victim_guess_addr | guess victim not access |
-    ###    self.action_space = spaces.Discrete(
-    ###      2 * len(self.attacker_address_space) + 1 + len(self.victim_address_space) + 1
-    ###    )
-    ###  else:
-    ###    # | attacker_addr | flush_attacker_addr | v | victim_guess_addr |
-    ###    self.action_space = spaces.Discrete(
-    ###      2 * len(self.attacker_address_space) + 1 + len(self.victim_address_space) 
-    ###    )
-    
+   
     '''
     define the observation space
     '''
@@ -219,18 +200,10 @@ class CacheGuessingGameEnv(gym.Env):
     ''' 
     self.vprint('Initializing...')
     self.l1 = self.hierarchy['cache_1']
-    #self.lv = self.hierarchy['cache_1'] 
-    # check multicore
-    if 'cache_1_core_2' in self.hierarchy:
-      self.lv = self.hierarchy['cache_1_core_2']
-    else:
-      self.lv = self.hierarchy['cache_1']
+    self.lv = self.hierarchy['cache_1']
 
     self.current_step = 0
     self.victim_accessed = False
-    ###if self.allow_empty_victim_access == True:
-    ###  self.victim_address = random.randint(self.victim_address_min, self.victim_address_max + 1)
-    ###else:
     self.victim_address = random.randint(self.victim_address_min, self.victim_address_max)
     self._randomize_cache()
     
@@ -436,10 +409,7 @@ class CacheGuessingGameEnv(gym.Env):
       self.hierarchy = build_hierarchy(self.configs, self.logger)
       self.l1 = self.hierarchy['cache_1']
       # check multicore
-      if 'cache_1_core_2' in self.hierarchy:
-        self.lv = self.hierarchy['cache_1_core_2']
-      else:
-        self.lv = self.hierarchy['cache_1']
+      self.lv = self.hierarchy['cache_1']
 
       if seed == -1:
         self._randomize_cache()
@@ -458,11 +428,6 @@ class CacheGuessingGameEnv(gym.Env):
         self.step_count = 0
 
     self.reset_time = 0
-
-    if self.configs['cache_1']["rep_policy"] == "plru_pl": # pl cache victim access always uses locked access
-      assert(self.victim_address_min == self.victim_address_max) # for plru_pl cache, only one address is allowed
-      self.vprint("[reset] victim access %d locked cache line" % self.victim_address_max)
-      lat, _ = self.lv.read(hex((self.victim_address_max))[2:], self.current_step)#, replacement_policy.PL_LOCK, domain_id='v')
 
     self.last_state = None
 
@@ -490,18 +455,7 @@ class CacheGuessingGameEnv(gym.Env):
   def _reset(self, victim_address=-1):
     self.current_step = 0
     self.victim_accessed = False
-    ###if victim_address == -1:
-      ###if self.allow_empty_victim_access == False:
     self.victim_address = random.randint(self.victim_address_min, self.victim_address_max)
-      ###else:  # when generating random addr use self.victim_address_max + 1 to represent empty access
-      ###  self.victim_address = random.randint(self.victim_address_min, self.victim_address_max + 1) 
-    ###else:
-    ###  assert(victim_address >= self.victim_address_min)
-    ###  if self.allow_empty_victim_access == True:
-    ###    assert(victim_address <= self.victim_address_max + 1 )
-    ###  else:
-    ###    assert(victim_address <= self.victim_address_max ) 
-    ###  self.victim_address = victim_address
     if self.victim_address <= self.victim_address_max:
       self.vprint("victim address (hex) " + hex(self.victim_address))
     else:
@@ -561,25 +515,12 @@ class CacheGuessingGameEnv(gym.Env):
     is_victim = 0
     is_flush = 0
     victim_addr = 0 
-    if self.flush_inst == False:
-      if action < len(self.attacker_address_space):
-        address = action
-      elif action == len(self.attacker_address_space):
-        is_victim = 1
-      else:
-        is_guess = 1
-        victim_addr = action - ( len(self.attacker_address_space) + 1 ) 
+    if action < len(self.attacker_address_space):
+      address = action
+    elif action == len(self.attacker_address_space):
+      is_victim = 1
     else:
-      if action < len(self.attacker_address_space):
-        address = action
-      elif action < 2 * len(self.attacker_address_space):
-        is_flush = 1
-        address = action - len(self.attacker_address_space) 
-        is_flush = 1
-      elif action == 2 * len(self.attacker_address_space):
-        is_victim = 1
-      else:
-        is_guess = 1
-        victim_addr = action - ( 2 * len(self.attacker_address_space) + 1 ) 
+      is_guess = 1
+      victim_addr = action - ( len(self.attacker_address_space) + 1 ) 
     return [ address, is_guess, is_victim, is_flush, victim_addr ] 
  
