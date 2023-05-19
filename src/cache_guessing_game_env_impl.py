@@ -150,14 +150,8 @@ class CacheGuessingGameEnv(gym.Env):
     if "rep_policy" not in self.configs['cache_1']:
       self.configs['cache_1']['rep_policy'] = 'lru'
     
-    if 'cache_1_core_2' in self.configs:
-      if "rep_policy" not in self.configs['cache_1_core_2']:
-        self.configs['cache_1_core_2']['rep_policy'] = 'lru'
-      self.configs['cache_1_core_2']['prefetcher'] = self.prefetcher
-
     #with open_dict(self.configs):
     self.configs['cache_1']['prefetcher'] = self.prefetcher
-
 
     '''
     check window size
@@ -168,7 +162,6 @@ class CacheGuessingGameEnv(gym.Env):
     else:
       self.window_size = window_size
     self.feature_size = 4
-
 
     '''
     instantiate the cache
@@ -184,44 +177,35 @@ class CacheGuessingGameEnv(gym.Env):
     self.victim_address_max = victim_addr_e
     self.victim_address_space = range(self.victim_address_min,
                                 self.victim_address_max + 1)  #
-
-    #####'''
-    #####for randomized address mapping rerandomization
-    #####'''
-    #####if self.rerandomize_victim == True:
-    #####  addr_space = max(self.victim_address_max, self.attacker_address_max) + 1
-    #####  self.perm = [i for i in range(addr_space)]
-    
-    self.mapping_func = lambda addr : addr
-   
+  
     '''
     define the action space
     '''
     # using tightened action space
-    if self.flush_inst == False:
-      # one-hot encoding
-      if self.allow_empty_victim_access == True:
-        # | attacker_addr | v | victim_guess_addr | guess victim not access |
-        self.action_space = spaces.Discrete(
-          len(self.attacker_address_space) + 1 + len(self.victim_address_space) + 1
-        )
-      else:
+    ####if self.flush_inst == False:
+    ####  # one-hot encoding
+    ####  if self.allow_empty_victim_access == True:
+    ####    # | attacker_addr | v | victim_guess_addr | guess victim not access |
+    ####    self.action_space = spaces.Discrete(
+    ####      len(self.attacker_address_space) + 1 + len(self.victim_address_space) + 1
+    ####    )
+    ####  else:
         # | attacker_addr | v | victim_guess_addr | 
-        self.action_space = spaces.Discrete(
-          len(self.attacker_address_space) + 1 + len(self.victim_address_space)
-        )
-    else:
-      # one-hot encoding
-      if self.allow_empty_victim_access == True:
-        # | attacker_addr | flush_attacker_addr | v | victim_guess_addr | guess victim not access |
-        self.action_space = spaces.Discrete(
-          2 * len(self.attacker_address_space) + 1 + len(self.victim_address_space) + 1
-        )
-      else:
-        # | attacker_addr | flush_attacker_addr | v | victim_guess_addr |
-        self.action_space = spaces.Discrete(
-          2 * len(self.attacker_address_space) + 1 + len(self.victim_address_space) 
-        )
+    self.action_space = spaces.Discrete(
+      len(self.attacker_address_space) + 1 + len(self.victim_address_space)
+    )
+    ###else:
+    ###  # one-hot encoding
+    ###  if self.allow_empty_victim_access == True:
+    ###    # | attacker_addr | flush_attacker_addr | v | victim_guess_addr | guess victim not access |
+    ###    self.action_space = spaces.Discrete(
+    ###      2 * len(self.attacker_address_space) + 1 + len(self.victim_address_space) + 1
+    ###    )
+    ###  else:
+    ###    # | attacker_addr | flush_attacker_addr | v | victim_guess_addr |
+    ###    self.action_space = spaces.Discrete(
+    ###      2 * len(self.attacker_address_space) + 1 + len(self.victim_address_space) 
+    ###    )
     
     '''
     define the observation space
@@ -244,10 +228,10 @@ class CacheGuessingGameEnv(gym.Env):
 
     self.current_step = 0
     self.victim_accessed = False
-    if self.allow_empty_victim_access == True:
-      self.victim_address = random.randint(self.victim_address_min, self.victim_address_max + 1)
-    else:
-      self.victim_address = random.randint(self.victim_address_min, self.victim_address_max)
+    ###if self.allow_empty_victim_access == True:
+    ###  self.victim_address = random.randint(self.victim_address_min, self.victim_address_max + 1)
+    ###else:
+    self.victim_address = random.randint(self.victim_address_min, self.victim_address_max)
     self._randomize_cache()
     
     '''
@@ -431,34 +415,6 @@ class CacheGuessingGameEnv(gym.Env):
         done = False                           # fake reset
         self._reset()                          # manually reset
 
-    '''
-    the observation should not obverve the victim latency
-    thus, we put victim latency in the info
-    the detector (ccHunter, Cyclone) can take advantage of the victim latency
-    ''' 
-    if victim_latency is not None:
-        info["victim_latency"] = victim_latency
-
-        if self.last_state is None:
-            cache_state_change = None
-        else:
-            cache_state_change = victim_latency ^ self.last_state
-        self.last_state = victim_latency
-    else:
-        if r == 2:
-            cache_state_change = 0
-        else:
-            if self.last_state is None:
-                cache_state_change = None
-            else:
-                cache_state_change = r ^ self.last_state
-            self.last_state = r
-
-    '''
-    this info is for use of various wrappers like cchunter_wrapper and cyclone_wrapper
-    '''
-    info["cache_state_change"] = cache_state_change
-
     if self.super_verbose == True:
       for cache in self.hierarchy:
         if self.hierarchy[cache].next_level:
@@ -534,19 +490,18 @@ class CacheGuessingGameEnv(gym.Env):
   def _reset(self, victim_address=-1):
     self.current_step = 0
     self.victim_accessed = False
-    if victim_address == -1:
-      if self.allow_empty_victim_access == False:
-        self.victim_address = random.randint(self.victim_address_min, self.victim_address_max)
-      else:  # when generating random addr use self.victim_address_max + 1 to represent empty access
-        self.victim_address = random.randint(self.victim_address_min, self.victim_address_max + 1) 
-    else:
-      assert(victim_address >= self.victim_address_min)
-      if self.allow_empty_victim_access == True:
-        assert(victim_address <= self.victim_address_max + 1 )
-      else:
-        assert(victim_address <= self.victim_address_max ) 
-      
-      self.victim_address = victim_address
+    ###if victim_address == -1:
+      ###if self.allow_empty_victim_access == False:
+    self.victim_address = random.randint(self.victim_address_min, self.victim_address_max)
+      ###else:  # when generating random addr use self.victim_address_max + 1 to represent empty access
+      ###  self.victim_address = random.randint(self.victim_address_min, self.victim_address_max + 1) 
+    ###else:
+    ###  assert(victim_address >= self.victim_address_min)
+    ###  if self.allow_empty_victim_access == True:
+    ###    assert(victim_address <= self.victim_address_max + 1 )
+    ###  else:
+    ###    assert(victim_address <= self.victim_address_max ) 
+    ###  self.victim_address = victim_address
     if self.victim_address <= self.victim_address_max:
       self.vprint("victim address (hex) " + hex(self.victim_address))
     else:
